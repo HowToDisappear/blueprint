@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'yourart/styles/yourart.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="submit-band">
+    <div class="submit-wrapper">
+        <div>
+            <h2>Share your artwork with the World</h2>
+        </div>
+        <div>
+            <p>
+                Whether you're an apiring artist, art student or just somebody who loves to draw for recreation, just upload your work to Blueprint and let the world see it!
+            </p>    
+        </div>
+        <div> 
+            <span class="submit-btn">
+                <a href="{% url 'yourart:submit' %}">
+                    Upload
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="content-band">
+    <div class="content-wrapper">
+
+        <div class="pics">
+            {% for entry in qs %}
+
+            {% with entry.id|stringformat:"s" as ids %}
+            {% with entry.title|slugify|add:"-"|add:ids as work %}
+            <div class="pic">
+                <div class="pic-img">
+                    <a href="{% url 'yourart:artwork' work %}">
+                        <img src="{{ entry.image.url }}"/>
+                    </a>
+                </div>
+                <div class="pic-content">
+                    <div class="content-artwork">
+                        <a href="{% url 'yourart:artwork' work %}">
+                            {{ entry.title }}
+                        </a>
+                        {% if entry.comment_set.all|length %}
+                        <span class="comments">
+                            <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 2C0 0.89543 0.895431 0 2 0H18C19.1046 0 20 0.89543 20 2V13C20 14.1046 19.1046 15 18 15H13.4142L10.7071 17.7071C10.3166 18.0976 9.68342 18.0976 9.29289 17.7071L6.58579 15H2C0.89543 15 0 14.1046 0 13V2ZM18 2H2V13H7C7.26522 13 7.51957 13.1054 7.70711 13.2929L10 15.5858L12.2929 13.2929C12.4804 13.1054 12.7348 13 13 13H18V2ZM4 5.5C4 4.94772 4.44772 4.5 5 4.5H15C15.5523 4.5 16 4.94772 16 5.5C16 6.05228 15.5523 6.5 15 6.5H5C4.44772 6.5 4 6.05228 4 5.5ZM4 9.5C4 8.94772 4.44772 8.5 5 8.5H11C11.5523 8.5 12 8.94772 12 9.5C12 10.0523 11.5523 10.5 11 10.5H5C4.44772 10.5 4 10.0523 4 9.5Z" fill="#888"/>
+                            </svg>
+                            <span>{{ entry.comment_set.all|length }}</span>
+                        </span>
+                        {% endif %}
+                    </div>
+                    <div class="content-artist">{{ entry.user.username }}</div>
+                </div>
+            </div>
+
+            {% endwith %}
+            {% endwith %}        
+            
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+            <!-- <div class="card">
+                <div class="card-img">
+                    <a href="{% url 'yourart:artwork' work %}">
+                        <img src="{{ entry.image.url }}"/>
+                    </a>
+                </div>
+                <div class="card-content">
+                    <span class="card-artist">{{ entry.user.username }}</span>
+                    <span class="card-artwork">
+                        <a href="{% url 'yourart:artwork' work %}">
+                            {{ entry.title }}
+                        </a>
+                    </span>
+                </div>
+            </div> -->

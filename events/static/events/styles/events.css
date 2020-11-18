@@ -1,0 +1,107 @@
+.content-wrapper {
+    margin: 0 auto;
+    padding: 25px 50px;
+    max-width: 1440px;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    position: relative;
+}
+.filter {
+    border: none;
+    background-color: rgb(240, 240, 240);
+    padding: 16px;
+}
+.filter legend {
+    position: absolute;
+    font-size: 20px;
+}
+.filter ul {
+    margin-top: 40px;
+    padding: 0;
+}
+.filter li {
+    margin-bottom: 8px;
+}
+.filter li label,
+.filter li input {
+    cursor: pointer;
+}
+
+.filter input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgb(100, 100, 100);
+    float: left;
+    margin-top: 2px;
+    margin-right: 8px;
+}
+.filter input:focus {
+    outline: none;
+}
+.filter input[type="radio"] {
+    border-radius: 50%;
+}
+.filter input[type="radio"]:checked {
+    border: 5px solid rgb(100, 100, 100);
+}
+.filter input[type="checkbox"]:checked {
+    border: 5px solid rgb(100, 100, 100);
+}
+.button {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #666;
+    color: #333;
+    padding: 12px;
+    transition: all 0.2s ease;
+    max-width: 160px;
+    margin-top: 12px;
+    margin-bottom: 32px;
+}
+.button:focus {
+    outline: none;
+}
+.button:hover {
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 0;
+    align-items: center;
+}
+.card-content {
+    background-color: rgb(240, 240, 240);
+    padding: 16px;
+}
+.card-title,
+.card-location,
+.card-when {
+    margin-bottom: 8px;
+}
+.card-title {
+    font-size: 22px;
+}
+.card-title > a {
+    text-decoration: none;
+    color: black;
+}
+.card-title > a:hover {
+    color: darkslateblue;
+}
+.card-price {
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,123 @@
+h1, h3 {
+    margin: 0;
+}
+h4 {
+    margin-bottom: 6px;
+}
+h3, h4 {
+    font-family: 'Fira Sans', sans-serif;
+    margin-top: 10px;
+}
+.pic-band {
+    background-color: rgb(240, 240, 240);
+}
+.pic-wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0px 50px;
+    display: grid;
+    grid-template-columns: 47% 47%;
+    column-gap: 6%;
+}
+.pic {
+    grid-column: 1;
+    max-width: 100%;
+    max-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pic img {
+    display: block;
+    max-width: 100%;
+    max-height: 60vh;
+}
+.info {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+.info > * {
+    display: block;
+}
+.etype {
+    font-variant: small-caps;
+    color: #444;
+    margin-bottom: 16px;
+}
+
+.when {
+    margin-bottom: 8px;
+}
+.when > div {
+    margin-left: 8px;
+}
+.pricing {
+    margin-bottom: 8px;
+}
+.pricing > div {
+    margin-left: 8px;
+}
+.free {
+    font-variant: small-caps;
+    color: black;
+}
+
+
+.details {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 16px 50px 32px 50px;
+    display: grid;
+    grid-template-columns: 47% 47%;
+    grid-gap: 6%;
+}
+.details p {
+    margin-top: 0;
+}
+.lorem {
+    grid-column: 1;
+}
+.location {
+    grid-column: 2;
+}
+figure {
+    margin: 0;
+}
+figcaption a {
+    font-size: 14px;
+    color: black;
+    transition: color 0.1s ease;
+}
+figcaption > div {
+    margin-bottom: 12px;
+}
+figcaption a:hover {
+    color: darkslateblue;
+}
+figure iframe {
+    width: 100%;
+}
+
+.online p > span {
+    display: inline-block;
+}
+.online p > span:nth-child(1) {
+    margin-left: 4px;
+    border-radius: 50%;
+    padding: 4px;
+    background-color: rgb(0, 180, 0);
+}
+
+.online p > span:nth-child(2) {
+    margin-left: 4px;
+    font-variant: small-caps;
+}
+.globe svg {
+    position: relative;
+    top: 10px;
+    left: 20px;
+    transform: scale(2);
+}

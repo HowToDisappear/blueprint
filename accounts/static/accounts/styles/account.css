@@ -1,0 +1,264 @@
+.info-wrapper {
+    max-width: 1440px;
+    padding: 0px 50px 25px 50px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.info-personal {
+    flex: 0 0 35%;
+}
+.info-site {
+    flex: 0 0 65%;
+}
+
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 15px;
+}
+form,
+form ul,
+form li {
+    width: 100%;
+}
+form ul {
+    padding: 0;
+    margin: 0;
+}
+form input[type="text"] {
+    border: none;
+    width: 100%;
+    line-height: 1.2rem;
+    padding-top: 0;
+    padding-left: 2px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #c0c0c0;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    transition: all 0.1s ease;
+}
+form input[type="text"]:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(100, 100, 100);
+}
+
+
+form li {
+    margin-top: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EBEAEB;
+}
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.username {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+.joined {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.data-db > div:first-child {
+    display: flex;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+.data-db > div:last-child {
+    line-height: 1.2rem;
+    padding-left: 2px;
+    padding-bottom: 5px;
+}
+.edit {
+    margin-left: auto;
+}
+
+.data-form {
+    display: none;
+}
+
+.submit-wrapper {
+    margin-top: 6px;
+    display: flex;
+    justify-content: flex-start;
+}
+.cancel {
+    width: 70px;
+    font-size: 1rem;
+    letter-spacing: 0.03rem;
+    appearance: none;
+    border: none;
+    color: #333333;
+    padding: 7px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.edit > button {
+    width: 70px;
+    font-size: 1rem;
+    letter-spacing: 0.03rem;
+    appearance: none;
+    border: none;
+    color: #333333;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.cancel:focus,
+.edit > button {
+    outline: none;
+}
+.cancel u,
+.edit > button u {
+    text-decoration: none;
+    color: #333333;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.submit {
+    width: 70px;
+    flex: 0 0 auto;
+    font-size: 1rem;
+    letter-spacing: 0.03rem;
+    appearance: none;
+    border: none;
+    background-color: #999;
+    color: #FFF;
+    padding: 7px;
+    transition: all 0.2s ease;
+}
+.submit:focus {
+    outline: none;
+}
+
+label[for="id_image"] {
+    width: fit-content;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 0.03rem;
+    font-weight: 600;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #666;
+    color: #333;
+    padding: 7px;
+    transition: all 0.2s ease;
+    margin-bottom: 10px;
+}
+
+
+
+.avatar-wrapper {
+    display: flex;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+.avatar-wrapper > div {
+    width: 190px;
+    height: fit-content;
+}
+.avatar-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.square {
+    width: 190px;
+    height: 190px;
+    border: 2px solid #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.square > span {
+    width: 180px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+}
+
+.avatar-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+#avatar-btn {
+    width: 100%;
+    flex: 0 0 auto;
+    cursor: pointer;
+    margin-top: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #666;
+    color: #333;
+    padding: 7px;
+    transition: all 0.2s ease;
+}
+#av_action {
+    display: none;
+}
+
+.avatar {
+    max-width: 190px;
+    max-height: 190px;
+    display: block;
+    border: 2px solid #666;
+    background-color: #f8f8f8;
+}
+#svg-profile {
+    transform: scale(1.266);
+}
+#area {
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    display: block;
+    border: 1px dashed black;
+}
+#avatar {
+    z-index: 5;
+    max-width: 186px;
+    max-height: 186px;
+    display: block;
+    margin: auto;
+}
+#delete {
+    height: 0;
+    width: 100%;
+    position: relative;
+    top: 0;
+    display: flex;
+}
+#delete > div {
+    border: 2px solid #999;
+    cursor: pointer;
+    position: absolute;
+    top: -2px;
+    right: -42px;
+    display: none;
+    padding: 15px;
+    transition: all 0.3s ease;
+    /* margin-left: auto; */
+}
+#delete > div:hover {
+    border: 2px solid #777;
+}
+#delete svg {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+#crop_params {
+    display: none;
+}

@@ -1,0 +1,133 @@
+.header-nav li a {
+    padding-bottom: 15px;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+.slider-band {
+    width: 100%;
+}
+.slider-wrapper {
+    margin: 0 auto;
+    padding: 0px 50px 25px 50px;
+    max-width: 1440px;
+}
+.slider-container {
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    width: 728px;
+    height: 520px;
+}
+.slider {
+    position: relative;
+}
+.slider ul {
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+}
+.slider li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 0.7s;
+}
+.slider li.opaque {
+    opacity: 0;
+}
+
+
+.info {
+    max-width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.info-title {
+}
+.info-body {
+}
+
+.info-title span {
+    font-size: 2rem;
+    color: white;
+    background-color: rgb(40,40,40,0.7);
+    padding: 0 8px;
+}
+.info-body span {
+    font-size: 1rem;
+    color: white;
+    background-color: rgb(40,40,40,0.7);
+    padding: 0 8px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+
+
+.slider .img {
+    max-width: 728px;
+    max-height: 520px;
+}
+.slider img {
+    display: block;
+    max-width: 728px;
+    max-height: 520px;
+}
+
+.slider-controls {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 12;
+    background-color: rgb(40,40,40,0.7);
+}
+.slider-controls button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 25px;
+    appearance: none;
+    border: none;
+    color: transparent;
+    background-color: transparent;
+    border-left: 1px solid rgba(100, 100, 100, 0.7);
+    cursor: pointer;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    transition: background-color 0.3s ease;
+}
+.slider-controls button:hover {
+    background-color: rgb(40,40,40,0.8);
+}
+.slider-controls button:focus {
+    outline: none;
+}
+
+.slider-controls span {
+    color: white;
+}
+
+.active.active {
+    background-color: white;
+}
+.slider-controls button[class="active"]:hover {
+    background-color: white;
+}
+
+#play {
+    padding-top: 4px;
+    padding-left: 2px;
+}

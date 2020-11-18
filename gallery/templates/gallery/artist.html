@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Artist{% endblock %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'gallery/styles/artist.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="artist-wrapper">
+    <div class="artist-details">
+        {% with artist.fname|add:"-"|add:artist.lname|lower as author %}
+        <h2>{{ artist.fname }} {{ artist.lname }}</h2>
+        <div class="artist-bio">{{ artist.bio|linebreaks }}</div>
+        <div class="wiki">
+            <a href="https://en.wikipedia.org/wiki/{{ artist.wiki }}">
+                <span class="wiki-btn">Read Wikipedia article</span>
+            </a>
+        </div>
+        <div class="artist-pic">
+            <figure>
+                <img src="{% static '' %}gallery/pics/{{author}}/{{author}}.jpg">
+            </figure>
+
+            {% if ev %}
+            {% with ev.id|stringformat:"s" as id %}
+            {% with ev.title|slugify|add:"-"|add:id as title %}
+            <div class="event">
+                <div class="card-content">
+                    <div class="card-hint">
+                        <span></span>
+                        <span>see in events</span>
+                    </div>
+                    <span class="card-title">
+                        <a href="{% url 'events:event' title %}">
+                            {{ ev.title }}
+                        </a>
+                    </span>
+                    <span class="card-location">{{ ev.location }}</span>
+                    <span class="card-when">{{ ev.start|date:"d M Y" }}{% if ev.end %} - {{ ev.end|date:"d M Y" }}{% endif %}</span>
+                </div>
+            </div>
+            {% endwith %}
+            {% endwith %}
+            {% endif %}
+            
+        </div>
+        {% endwith %}
+    </div>
+    <div class="artist-artworks">
+        <h2>Artworks</h2>
+        <div class="artworks">
+            {% include 'card.html' with artworks=artwork_list %}
+        </div>
+    </div>
+</div>
+{% endblock %}

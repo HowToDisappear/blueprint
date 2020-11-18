@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Art{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'gallery/styles/art.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="art-band">
+    <div class="art-band-wrapper">
+        <div>
+            <h2>The Blueprint Collection</h2>
+        </div>
+        <div>
+            <p>Explore the Art and Artists</p>
+        </div>
+    </div>
+</div>
+<div class="content-wrapper">
+
+    <div class="artworks-wrapper">
+        <h2>Artworks</h2>
+        <div class="cards">
+            {% include 'card.html' with artworks=artworks %}
+        </div>
+    </div>
+
+    <div class="artists-wrapper">
+        <h2>Artists</h2>
+        <div class="artists">
+            <ul>
+            {% for artists in alphabet_artists %}
+            <div class="letter">{{ artists.0 }}</div>
+            {% for artist in artists.1 %}
+            {% with artist.fname|add:"-"|add:artist.lname|lower as author %}
+                <li>
+                    <a href="{% url 'gallery:artist' author %}">
+                        <span>{{ artist.lname }} {{ artist.fname }}</span>
+                    </a>
+                </li>
+            {% endwith %}
+            {% endfor %}
+
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

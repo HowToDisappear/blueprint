@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/styles/logreg.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="content-wrapper">
+
+    {% if type == "login" %}
+    <div class="link-reg">First time here? <a href="{% url 'accounts:register' %}">Create an Account</a></div>
+    <h3>Sign in</h3>
+    <form action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+        <ul>
+            {% if auth_msg %}
+            <li>
+                {{ auth_msg }}
+            </li>
+            {% endif %}
+            {% for field in uform.visible_fields %}
+            <li>
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </li>
+            {% endfor %}
+            <li>
+                <button type="submit">Sign in</button>
+            </li>
+        </ul>
+    </form>
+
+    {% elif type == "register" %}
+    {% if not user_created %}
+    <div class="link-signin">Already have a Blueprint account? <a href="{% url 'accounts:login' %}">Sign in</a></div>
+    <h3>Register</h3>
+    <form action="{% url 'accounts:register' %}" method="post">
+        {% csrf_token %}
+        <ul>
+            <li>
+                {{ uform.non_field_errors }}
+            </li>
+            {% for field in uform.visible_fields %}
+            <li>
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </li>
+            {% endfor %}
+            <li>
+                <button type="submit">Register</button>
+            </li>
+        </ul>
+    </form>
+    {% elif user_created %}
+    <p class="notification">
+        Confirmation email has been sent to your email address. Please follow the link in the email to activate your account.
+    </p>
+    {% endif %}
+
+    {% endif %}
+    
+</div>
+
+{% endblock %}

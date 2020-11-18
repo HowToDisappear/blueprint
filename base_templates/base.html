@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/card.css' %}" />
+        <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        {% block style %}{% endblock %}
+        <title>Blueprint - {% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+
+        <header class="header">
+            <div class="header-wrapper">
+                <div>
+                    
+                    <div class="logo">
+                        <a href="{% url 'home:home' %}">Blueprint</a>
+                    </div>
+                    <div class="user">
+                        <div>
+                            <ul>
+                                {% if not request.user.is_authenticated %}
+                                <li>
+                                    <a href="{% url 'accounts:login' %}">
+                                        <span>Sign in</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'accounts:register' %}">
+                                        <span>Register</span>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="username">
+                                    <a href="/accounts/{{ request.user.username }}-{{ request.user.id }}">
+                                        <span>{{ request.user.username }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'accounts:logout' %}">
+                                        <span>Sign out</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>    
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <ul>
+                    <li class="header-nav-section">
+                        <a href="/art/">art</a>
+                    </li>
+                    <li class="header-nav-section">
+                        <a href="/events/">events</a>
+                    </li>
+                    <li class="header-nav-section">
+                        <a href="/yourart/">your art</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer class="footer">
+            <div class="footer-wrapper">
+                <div class="footer-content">
+                    <div class="about">
+                        <h3>About</h3>
+                        <span><a>About us</a></span>
+                        <span><a>Help</a></span>
+                        <span><a>Privacy policy</a></span>
+                        <span><a>Terms and conditions</a></span>
+                        <span><a>Press releases</a></span>
+                        <span><a>Contact us</a></span>
+                    </div>
+                    <div class="support">
+                        <h3>Support</h3>
+                        <span><a>Membership</a></span>
+                        <span><a>Donate</a></span>
+                        <span><a>Patrons</a></span>
+                    </div>
+                    <div class="join">
+                        <h3>Sign up to emails</h3>
+                        <p>Sign up</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script src="{% static 'scripts/base.js' %}"></script>
+    </body>
+</html>

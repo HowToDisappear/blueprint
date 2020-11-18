@@ -1,0 +1,33 @@
+.card {
+    max-width: 100%;
+    margin-bottom: 20px;
+    break-inside: avoid;
+}
+.card-content {
+    background-color: rgb(240, 240, 240);
+    padding: 16px;
+}
+.card-content > span {
+    display: flex;
+}
+.card-artist {
+    margin-bottom: 8px;
+}
+.card-artwork {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+.card-artwork > a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    transition: color 0.2s ease;
+}
+.card-artwork > a:hover {
+    color: darkslateblue;
+}
+.card img {
+    display: block;
+    max-width: 100%;
+}

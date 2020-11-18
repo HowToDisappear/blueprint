@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Events{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'events/styles/events.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+
+    <div class="filters-wrapper">
+        <form action="{% url 'events:events' %}" method="GET" class="filters">
+            {% for filter in events_filter %}
+            <fieldset class="filter">
+                <legend>{{ filter.label }}</legend>
+                {{ filter }}
+            </fieldset>
+            {% endfor %}
+            <input type="hidden" id="etypes" name="etypes" value="">
+            <button type="button" class="button">Show results</button>
+        </form>
+    </div>
+
+    <div class="cards-wrapper">
+        <h2>Events</h2>
+        <div class="cards">
+
+            {% for ev in events %}
+            <div class="card">
+
+                {% with ev.id|stringformat:"s" as id %}
+                {% with ev.title|slugify|add:"-"|add:id as title %}
+
+                <div class="card-img">
+                    <a href="{% url 'events:event' title %}">
+                        {% if not ev.artwork %}
+                        {% with "events/pics/"|add:title|add:".jpg" as imgref %}
+                        <img src="{% static imgref %}" />
+                        {% endwith %}
+                        {% else %}
+                        {% with ev.artwork.artist.fname|add:"-"|add:ev.artwork.artist.lname|lower as artist %}
+                        {% with ev.artwork.title|slugify as artwork %}
+                        {% with "gallery/pics/"|add:artist|add:"/"|add:artwork|add:".jpg" as imgref %}
+                        <img src="{% static imgref %}" />
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">
+                        <a href="{% url 'events:event' title %}">
+                            {{ ev.title }}
+                        </a>
+                    </span>
+                    <span class="card-location">{{ ev.location }}</span>
+                    <span class="card-when">{{ ev.start|date:"d M Y" }}{% if ev.end %} - {{ ev.end|date:"d M Y" }}{% endif %}</span>
+                    <span class="card-price">
+                        {% if ev.price and ev.pricem %}
+                        ticket
+                        {% else %}
+                        free entry
+                        {% endif %}
+                    </span>
+                </div>
+
+                {% endwith %}
+                {% endwith %}
+
+            </div>
+            {% endfor %}            
+            
+        </div>
+    </div>
+
+    <script src="{% static 'events/scripts/events.js' %}"></script>
+</div>
+{% endblock %}

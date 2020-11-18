@@ -1,0 +1,22 @@
+{% load static %}
+
+{% for artwork in artworks %}
+<div class="card">
+    {% with artwork.artist.fname|add:"-"|add:artwork.artist.lname|lower as author %}
+    {% with artwork.id|stringformat:"s" as ids %}
+    {% with artwork.title|slugify|add:"-"|add:ids as work %}
+    <div class="card-img">
+        <a href="{% url 'gallery:artwork' author work %}">
+            <img src="../../static/gallery/pics/{{ artwork.artist.fname|lower }}-{{ artwork.artist.lname|lower }}/{{ artwork.title|slugify }}.thumbnail.jpg" />
+        </a>
+    </div>
+    <div class="card-content">
+        <span class="card-artist">{{ artwork.artist.fname }} {{ artwork.artist.lname }}</span>
+        <span class="card-artwork"><a href="{% url 'gallery:artwork' author work %}">{{ artwork.title }}</a></span>
+        <span class="card-artwork-year">{{ artwork.ymade }}</span>
+    </div>
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+</div>
+{% endfor %}

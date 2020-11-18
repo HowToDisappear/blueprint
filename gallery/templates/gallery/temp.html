@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Temp</title>
+    </head>
+    <body>
+        <div>
+            <h2>Ordinary HTML form</h2>
+            <form action="temp" method="POST">
+                {% csrf_token %}
+                <ul>
+                    <li>
+                        <label for="nickname">Your nickname: </label>
+                        <input type="text" id="nickname" name="user_name">
+                    </li>
+                    <li>
+                        <label for="mail">Your email: </label>
+                        <input type="email" id="mail" name="user_email">
+                    </li>
+                    <li>
+                        <button type="submit">Send</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+        <div>
+            <h2>Sign in form</h2>
+            <form action="temp" method="POST">
+                {% csrf_token %}
+                {{ myform }}
+                <button type="submit">Sign in</button>
+            </form>
+        </div>
+
+    </body>
+</html>

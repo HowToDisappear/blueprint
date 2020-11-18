@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/styles/home.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="slider-band">
+    <div class="slider-wrapper">
+        <div class="slider-container">
+            <div class="slider">
+                <ul>
+                    <li id="slide-1">
+                        <a href="/art/alexander-calder/black-sun-31">
+                            <div class="info">
+                                <div class="info-title">
+                                    <span>Black Sun</span>
+                                </div>
+                                <div class="info-body">
+                                    <span>Learn about Alexander Calder's renowned artwork</span>
+                                </div>
+                            </div>
+                            <div class="img">
+                                <img src="{% static 'home/pics/slider/black-sun.jpg' %}" />
+                            </div>
+                        </a>
+                    </li>
+                    <li id="slide-2" class="opaque">
+                        <a href="/art/roy-lichtenstein">
+                            <div class="info">
+                                <div class="info-title">
+                                    <span>Meet the artists</span>
+                                </div>
+                                <div class="info-body">
+                                    <span>Who is Roy Lichtenstein?</span>
+                                </div>
+                            </div>
+                            <div class="img">
+                                <img src="{% static 'home/pics/slider/sandwich-and-soda.jpg' %}" />
+                            </div>
+                        </a>
+                    </li>
+                    <li id="slide-3" class="opaque">
+                        <a href="/events/watercolor-basics-13">
+                            <div class="info">
+                                <div class="info-title">
+                                    <span>Get creative</span>
+                                </div>
+                                <div class="info-body">
+                                    <span>Take part in our 'Watercolor basics' workshop</span>
+                                </div>
+                            </div>
+                            <div class="img">
+                                <img src="{% static 'home/pics/slider/watercolor-basics-13.jpg' %}" />
+                            </div>
+                        </a>
+                    </li>
+                    <li id="slide-4" class="opaque">
+                        <a href="/yourart/opera-house-21">
+                            <div class="info">
+                                <div class="info-title">
+                                    <span>Share & discuss</span>
+                                </div>
+                                <div class="info-body">
+                                    <span>Discuss artworks of others or upload your own</span>
+                                </div>
+                            </div>
+                            <div class="img">
+                                <img src="{% static 'home/pics/slider/opera-house.jpg' %}" />
+                            </div>
+                        </a>
+                    </li>
+                    <li id="slide-5" class="opaque">
+                        <a href="#">
+                            <div class="info">
+                                <div class="info-title">
+                                    <span>Plan your visit</span>
+                                </div>
+                                <div class="info-body">
+                                    <span></span>
+                                </div>
+
+                            </div>
+                            <div class="img">
+                                <img src="{% static 'home/pics/slider/palace-square.jpg' %}" />
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="slider-controls">
+                <button type="button" id="playback">
+                    <span id="play">
+                        <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 2.74105C0 1.19747 1.67443 0.235725 3.00774 1.01349L12.0231 6.27246C13.3461 7.04421 13.3461 8.95582 12.0231 9.72757L3.00774 14.9865C1.67443 15.7643 0 14.8026 0 13.259V2.74105ZM11.0154 8.00001L2 2.74105V13.259L11.0154 8.00001Z" fill="#fff"/>
+                        </svg>
+                    </span>
+                    <span id="pause">
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 0C1.55228 0 2 0.447715 2 1V11C2 11.5523 1.55228 12 1 12C0.447715 12 0 11.5523 0 11V1C0 0.447715 0.447715 0 1 0ZM7 0C7.55228 0 8 0.447715 8 1V11C8 11.5523 7.55228 12 7 12C6.44772 12 6 11.5523 6 11V1C6 0.447715 6.44772 0 7 0Z" fill="#fff"/>
+                        </svg>                            
+                    </span>
+                </button>
+                <button type="button"><span>1</span></button>
+                <button type="button"><span>2</span></button>
+                <button type="button"><span>3</span></button>
+                <button type="button"><span>4</span></button>
+                <button type="button"><span>5</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-band">
+    <div class="content-wrapper"></div>    
+</div>
+
+<script src="{% static 'home/scripts/home.js' %}"></script>
+{% endblock %}

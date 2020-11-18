@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'yourart/styles/submit.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="content-wrapper">
+
+    {% if request.user.is_authenticated %}
+    <h3>Upload your artwork</h3>
+    <form action="{% url 'yourart:submit' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <ul>
+            {{ form.as_ul }}
+            <li>
+                <button type="submit">Submit</button>
+            </li>
+        </ul>
+    </form>
+    {% else %}
+    <p class="notification">Please sign in before submitting your work</p>
+    {% endif %}
+    
+</div>
+
+{% endblock %}

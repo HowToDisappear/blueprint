@@ -1,0 +1,100 @@
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'yourart/styles/artwork.css' %}" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <title>{{ artwork.title }}</title>
+    </head>
+    <body>
+        <span id="user" hidden>{{ request.user.username }}</span>
+        <div class="content-wrapper">
+            <div class="content">
+
+                <a href="{% url 'yourart:yourart' %}" class="close">
+                    <span>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L8.41421 7L13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071C13.3166 14.0976 12.6834 14.0976 12.2929 13.7071L7 8.41421L1.70711 13.7071C1.31658 14.0976 0.683417 14.0976 0.292893 13.7071C-0.0976311 13.3166 -0.0976311 12.6834 0.292893 12.2929L5.58579 7L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="white"/>
+                        </svg>    
+                    </span>
+                </a>
+
+                <div class="image-wrapper">
+                    <img src="{{ artwork.image.url }}" />
+                </div>
+
+                <div class="sidebar">
+                    <div class="info">
+                        <h2>{{ artwork.title }}</h2>
+                        <div>
+                            <span>author: </span>
+                            <span>
+                                <a href="">{{ artwork.user.username }}</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form">
+                        <div class="comment-avatar">
+                            {% if request.user.account.image %}
+                            <img src="{{ request.user.account.image.url }}" />
+                            {% else %}
+                            <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.418 40.8203C31.3164 40.8203 40.3398 31.7773 40.3398 20.8984C40.3398 10 31.2969 0.976562 20.3984 0.976562C9.51953 0.976562 0.496094 10 0.496094 20.8984C0.496094 31.7773 9.53906 40.8203 20.418 40.8203ZM20.418 27.5586C14.5586 27.5586 10.0273 29.6484 8.05469 31.9922C5.41797 29.0625 3.83594 25.1758 3.83594 20.8984C3.83594 11.6797 11.1797 4.29688 20.3984 4.29688C29.6172 4.29688 37 11.6797 37.0195 20.8984C37.0391 25.1758 35.4375 29.0625 32.8008 32.0117C30.8281 29.668 26.2969 27.5586 20.418 27.5586ZM20.418 24.2383C24.168 24.2773 27.1172 21.0742 27.1172 16.875C27.1172 12.9297 24.168 9.64844 20.418 9.64844C16.668 9.64844 13.6992 12.9297 13.7188 16.875C13.7383 21.0742 16.668 24.1992 20.418 24.2383Z" fill="#999"/>
+                            </svg>
+                            {% endif %}
+                        </div>
+                        {% with artwork.id|stringformat:"s" as ids %}
+                        {% with artwork.title|slugify|add:"-"|add:ids as work %}        
+                        <form id="form" action="{% url 'yourart:artwork' work %}" method="POST">
+                            {% csrf_token %}
+                            <div class="input">
+                                <div id="divtxt" role="textbox" contenteditable="true" aria-multiline="true"></div>
+                                <input id="inptxt" type="hidden" name="content" value="">
+                            </div>
+                            <div class="submit">
+                                <button id="cancel" type="button">Cancel</button>
+                                <button id="submit" type="submit" form="form" disabled>Submit</button>
+                            </div>
+                        </form>
+                        {% endwith %}
+                        {% endwith %}
+                    </div>
+                    <div class="comments">
+                        {% for comment in comments %}
+                        {% if comment.artwork == artwork %}
+                        <div class="comment">
+                            <div class="comment-avatar">
+                                {% if comment.user.account.image %}
+                                <img src="{{ comment.user.account.image.url }}" />
+                                {% else %}
+                                <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.418 40.8203C31.3164 40.8203 40.3398 31.7773 40.3398 20.8984C40.3398 10 31.2969 0.976562 20.3984 0.976562C9.51953 0.976562 0.496094 10 0.496094 20.8984C0.496094 31.7773 9.53906 40.8203 20.418 40.8203ZM20.418 27.5586C14.5586 27.5586 10.0273 29.6484 8.05469 31.9922C5.41797 29.0625 3.83594 25.1758 3.83594 20.8984C3.83594 11.6797 11.1797 4.29688 20.3984 4.29688C29.6172 4.29688 37 11.6797 37.0195 20.8984C37.0391 25.1758 35.4375 29.0625 32.8008 32.0117C30.8281 29.668 26.2969 27.5586 20.418 27.5586ZM20.418 24.2383C24.168 24.2773 27.1172 21.0742 27.1172 16.875C27.1172 12.9297 24.168 9.64844 20.418 9.64844C16.668 9.64844 13.6992 12.9297 13.7188 16.875C13.7383 21.0742 16.668 24.1992 20.418 24.2383Z" fill="#999"/>
+                                </svg>
+                                {% endif %}
+                            </div>
+                            <div class="comment-user">
+                                <span class="username">
+                                    <strong>
+                                        <a href="">{{ comment.user.username }}</a>
+                                    </strong>
+                                </span>
+                                <span class="timestamp">{{ comment.time|naturaltime }}</span>
+                            </div>
+                            <div class="comment-text">
+                                <span>{{ comment.content }}</span>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>            
+                </div>
+
+            </div>
+        </div>
+
+        <script src="{% static 'yourart/scripts/artwork_yourart.js' %}"></script>
+    </body>
+</html>

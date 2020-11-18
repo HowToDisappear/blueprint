@@ -1,0 +1,130 @@
+
+.artist-wrapper {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 25px 50px;
+}
+.artist-details {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 30px;
+    display: grid;
+    grid-template-columns: 65% minmax(0, 30%);
+    column-gap: 5%;
+    border-bottom: 1px solid #EBEAEB;
+}
+.artist-details h2 {
+    margin-bottom: 0;
+    grid-column: 1/-1;
+    grid-row: 1;
+}
+.artist-bio {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 25px;
+}
+.wiki {
+    grid-column: 1;
+    grid-row: 3;
+    width: fit-content;
+    height: fit-content;
+}
+.wiki a {
+    text-decoration: none;
+}
+.wiki-btn {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px solid #666;
+    color: #333;
+    padding: 12px;
+    transition: all 0.2s ease;
+}
+.wiki-btn:focus {
+    outline: none;
+}
+.wiki-btn:hover {
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+
+.artist-pic {
+    grid-column: 2;
+    grid-row: 2;
+}
+.artist-pic figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: #f8f8f8;
+    margin-top: 16px;
+    max-width: 100%;
+}
+.artist-pic img {
+    max-width: 100%;
+    max-height: 250px;
+}
+
+.event {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 16px;
+}
+.card-content {
+    background-color: rgb(240, 240, 240);
+    padding: 16px;
+}
+.card-title,
+.card-location,
+.card-when,
+.card-hint {
+    margin-bottom: 8px;
+}
+.card-hint > span {
+    display: inline-block;
+}
+.card-hint > span:nth-child(1) {
+    border-radius: 50%;
+    padding: 4px;
+    background-color: rgb(0, 180, 0);
+}
+.card-hint > span:nth-child(2) {
+    font-variant: small-caps;
+    margin-left: 4px;
+}
+.card-title {
+    font-size: 22px;
+    font-family: 'Nunito', sans-serif;
+}
+.card-title > a {
+    text-decoration: none;
+    color: black;
+}
+.card-title > a:hover {
+    color: darkslateblue;
+}
+
+
+.artist-details p {
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+.artworks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+    align-items: center;
+}
+.artist-details p {
+    margin-top: 16px;
+    margin-bottom: 0;    
+}
+
+.artist-artworks {
+    padding-top: 25px;
+}

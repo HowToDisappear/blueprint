@@ -1,0 +1,152 @@
+.submit-band {
+    background-image: url('../pics/bands/raphael.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.content-wrapper,
+.submit-wrapper {
+    margin: 0 auto;
+    padding: 25px 50px;
+    max-width: 1440px;
+}
+.submit-wrapper > div {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.submit-wrapper > div h2 {
+    padding: 0 3px;
+    background-color: rgb(255,255,255,0.3);
+    margin-bottom: 25px;
+}
+.submit-wrapper > div p {
+    padding: 0 3px;
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 25px;
+    margin-top: 0;
+    background-color: rgb(255,255,255,0.3);
+}
+.submit-btn {
+    display: inline-block;
+    padding: 0 3px;
+    background-color: rgb(255,255,255,0.3);
+    font-family: 'Nunito', sans-serif;
+}
+.submit-btn a {
+    color: black;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.submit-btn a:hover {
+    color: darkslateblue;
+}
+
+.pics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 0;
+    align-items: center;
+    justify-content: center;
+}
+.pic {
+    max-width: 100%;
+    height: 300px;
+}
+.pic-img {
+    height: 70%;
+    background-color: #f8f8f8;
+}
+.pic-img a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pic-img img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pic-content {
+    height: 30%;
+}
+.content-artwork {
+    margin-top: 4px;
+    padding: 0 8px;
+    display: flex;
+}
+.content-artwork > a {
+    font-family: 'Nunito', sans-serif;
+    display: inline-block;
+    flex: 1 1 auto;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    transition: color 0.2s ease;
+}
+.content-artwork > a:hover {
+    color: darkslateblue;
+}
+.content-artwork .comments {
+    font-family: 'Nunito', sans-serif;
+    color: #888;
+    font-weight: bolder;
+    font-size: 12px;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+}
+.content-artwork .comments > * {
+    margin-left: 4px;
+}
+.content-artwork .comments svg {
+    transform: scale(0.65);
+}
+.content-artwork .comments span {
+    padding-bottom: 2px;
+}
+
+.content-artist {
+    font-family: 'Nunito', sans-serif;
+    padding: 0 8px;
+}
+
+
+
+/* .card {
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-radius: 50px;
+}
+.card-content {
+    background-color: rgb(240, 240, 240);
+    padding: 16px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.card-content > span {
+    display: flex;
+}
+.card-artist {
+    margin-bottom: 8px;
+}
+.card-artwork {
+    font-size: 22px;
+}
+.card-artwork > a {
+    text-decoration: none;
+    color: black;
+}
+.card-artwork > a:hover {
+    color: darkslateblue;
+}
+.card img {
+    display: block;
+    max-width: 100%;
+} */
