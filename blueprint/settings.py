@@ -86,13 +86,20 @@ WSGI_APPLICATION = 'blueprint.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blueprint',
-        'USER': 'Nikita',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        # 'NAME': 'blueprint',
+        # 'USER': 'Nikita',
+        # 'PASSWORD': '',
+        'HOST': 'DATABASE_URL',
+        # 'PORT': '5432',
     }
 }
+import psycopg2
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
 
 
 # Password validation
