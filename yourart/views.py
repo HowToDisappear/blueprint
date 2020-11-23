@@ -4,7 +4,6 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
-from blueprint import settings
 
 from .models import Yourart, Comment
 from .forms import YourartForm
@@ -44,15 +43,6 @@ def submit(request):
         form = YourartForm(data, request.FILES)
         if form.is_valid():
             form.save()
-            # renaming file from original to 'title'(model) slug
-            # title_slug = '-'.join(new_obj.title.strip().lower().replace("'","").split(' '))
-            # old_path = settings.MEDIA_ROOT + new_obj.image.name
-            # dir, file = os.path.split(new_obj.image.name)
-            # file = title_slug + os.path.splitext(file)[1]
-            # new_path = settings.MEDIA_ROOT + os.path.join(dir, file)
-            # os.rename(old_path, new_path)
-            # new_obj.image.name = os.path.join(dir, file)
-            # new_obj.save()
             return HttpResponseRedirect('/yourart/')
     elif request.method == 'GET':
         form = YourartForm()
