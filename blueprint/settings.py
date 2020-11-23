@@ -11,151 +11,159 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y9+7(fyu#ch)pnz-@=qm)(&p9kr$t^vpe!t*)gb+ip4oq$l^6e'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = [
-    'blueprint999.herokuapp.com',
-]
+settings_selected = os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings_prod')
+if settings_selected == 'settings_prod':
+    from settings_prod import *
+elif settings_selected == 'settings_dev':
+    from settings_dev import *
 
 
-# Application definition
+# import os
 
-INSTALLED_APPS = [
-    'django.contrib.humanize',
-    'yourart.apps.YourartConfig',
-    'accounts.apps.AccountsConfig',
-    'events.apps.EventsConfig',
-    'gallery.apps.GalleryConfig',
-    'home.apps.HomeConfig',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
-
-MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-ROOT_URLCONF = 'blueprint.urls'
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'base_templates'),],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.media',
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
-WSGI_APPLICATION = 'blueprint.wsgi.application'
+# # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+# # Quick-start development settings - unsuitable for production
+# # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'blueprint',
-        # 'USER': 'Nikita',
-        # 'PASSWORD': '',
-        'HOST': 'DATABASE_URL',
-        # 'PORT': '5432',
-    }
-}
-import psycopg2
-DATABASE_URL = os.environ['DATABASE_URL']
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'y9+7(fyu#ch)pnz-@=qm)(&p9kr$t^vpe!t*)gb+ip4oq$l^6e'
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+
+# ALLOWED_HOSTS = [
+#     'blueprint999.herokuapp.com',
+# ]
 
 
+# # Application definition
 
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+# INSTALLED_APPS = [
+#     'django.contrib.humanize',
+#     'yourart.apps.YourartConfig',
+#     'accounts.apps.AccountsConfig',
+#     'events.apps.EventsConfig',
+#     'gallery.apps.GalleryConfig',
+#     'home.apps.HomeConfig',
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+# ]
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+# MIDDLEWARE = [
+#     'whitenoise.middleware.WhiteNoiseMiddleware',
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# ]
+
+# ROOT_URLCONF = 'blueprint.urls'
+
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [os.path.join(BASE_DIR, 'base_templates'),],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.media',
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
+
+# WSGI_APPLICATION = 'blueprint.wsgi.application'
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
+# # Database
+# # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-LANGUAGE_CODE = 'en-us'
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         # 'NAME': 'blueprint',
+#         # 'USER': 'Nikita',
+#         # 'PASSWORD': '',
+#         'HOST': 'DATABASE_URL',
+#         # 'PORT': '5432',
+#     }
+# }
+# import psycopg2
+# DATABASE_URL = os.environ['DATABASE_URL']
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = False
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'base_static'),
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# import dj_database_url
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
-# emails
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'nikita.veremchuk@gmail.com'
-# ! you need to add a password !
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# media (files uploaded by users)
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_URL = '/media/'
+# # Password validation
+# # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+
+# AUTH_PASSWORD_VALIDATORS = [
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+#     },
+# ]
+
+
+# # Internationalization
+# # https://docs.djangoproject.com/en/3.0/topics/i18n/
+
+# LANGUAGE_CODE = 'en-us'
+
+# TIME_ZONE = 'UTC'
+
+# USE_I18N = True
+
+# USE_L10N = True
+
+# USE_TZ = False
+
+
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'base_static'),
+# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# # emails
+# # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'nikita.veremchuk@gmail.com'
+# # ! you need to add a password !
+# EMAIL_HOST_PASSWORD = ''
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# # media (files uploaded by users)
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# MEDIA_URL = '/media/'

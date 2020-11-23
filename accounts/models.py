@@ -11,7 +11,6 @@ from django.core.files.base import ContentFile
 from gallery.models import Artwork
 from events.models import Event
 from yourart.models import Yourart
-from blueprint.settings import MEDIA_ROOT
 
 IMG_HEIGHT = 190
 IMG_WIDTH = 190
