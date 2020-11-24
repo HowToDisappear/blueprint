@@ -36,7 +36,7 @@
                 <div class="card-img">
                     <a href="{% url 'events:event' title %}">
                         {% if not ev.artwork %}
-                        {% with "events/pics/"|add:title|add:".jpg" as imgref %}
+                        {% with "events/pics/"|add:title|add:".thumbnail.jpg" as imgref %}
                         <img src="{% static imgref %}" />
                         {% endwith %}
                         {% else %}
