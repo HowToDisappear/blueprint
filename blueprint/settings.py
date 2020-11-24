@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y9+7(fyu#ch)pnz-@=qm)(&p9kr$t^vpe!t*)gb+ip4oq$l^6e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'blueprint999.herokuapp.com',
@@ -89,11 +89,7 @@ WSGI_APPLICATION = 'blueprint.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'blueprint',
-        # 'USER': 'Nikita',
-        # 'PASSWORD': '',
         'HOST': 'DATABASE_URL',
-        # 'PORT': '5432',
     }
 }
 import psycopg2
