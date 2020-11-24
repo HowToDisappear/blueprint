@@ -42,7 +42,7 @@
                         {% else %}
                         {% with ev.artwork.artist.fname|add:"-"|add:ev.artwork.artist.lname|lower as artist %}
                         {% with ev.artwork.title|slugify as artwork %}
-                        {% with "gallery/pics/"|add:artist|add:"/"|add:artwork|add:".jpg" as imgref %}
+                        {% with "gallery/pics/"|add:artist|add:"/"|add:artwork|add:".thumbnail.jpg" as imgref %}
                         <img src="{% static imgref %}" />
                         {% endwith %}
                         {% endwith %}
