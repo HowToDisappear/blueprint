@@ -9,7 +9,7 @@ var pause = document.querySelector('#pause');
 
 function init() {
     change();
-    intervId = window.setInterval(change, 5000);
+    intervId = window.setInterval(change, 6000);
     pause.style.display = 'block';
     play.style.display = 'none';
 }
