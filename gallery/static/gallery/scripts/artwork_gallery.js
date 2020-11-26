@@ -5,9 +5,11 @@ window.addEventListener('load', expColl);
 function expColl() {
     let descrPar = document.querySelectorAll('.descr-par')[0];
     let descrBtn = document.querySelectorAll('.descr-btn')[0];
+    let parFade = document.querySelectorAll('.par-fadeout')[0];
     if (descrPar.clientHeight > 200) {
         descrPar.classList.toggle('short');
         descrBtn.style.display = 'block';
+        parFade.style.display = 'block';
 
         descrBtn.addEventListener('click', function(e) {
             let x = window.pageXOffset;
@@ -15,10 +17,12 @@ function expColl() {
             descrPar.classList.toggle('short');
             if (descrPar.classList.contains('short')) {
                 descrBtn.textContent = 'Expand';
+                parFade.style.display = 'block';
             }
             else {
                 window.scroll(x, y);
                 descrBtn.textContent = 'Collapse';
+                parFade.style.display = 'none';
             }
         });
     }

@@ -1,8 +1,14 @@
 .content-wrapper {
     margin: 0 auto;
-    padding: 0px 50px 25px 50px;
+    padding: 0px 50px 40px 50px;
     max-width: 1440px;
 }
+@media (max-width: 750px) {
+    .content-wrapper {
+        padding: 0 20px 20px 20px;
+    }
+}
+
 h2 {
     font-size: 1.6rem;
     margin: 0;
@@ -47,6 +53,22 @@ h2 {
     padding-bottom: 30px;
     border-bottom: 1px solid #EBEAEB;
 }
+@media (max-width: 1000px) {
+    .cards {
+        column-count: 3;
+    }
+}
+@media (max-width: 750px) {
+    .cards {
+        column-count: 2;
+    }
+}
+@media (max-width: 450px) {
+    .cards {
+        column-count: 1;
+    }
+}
+
 
 .artists {
 }
@@ -66,14 +88,44 @@ h2 {
     font-family: 'Nunito', sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
-    margin-top: 10px;
+    padding: 10px;
+    margin-top: 0px;
 }
 
 .artists ul > * {
-    width: 300px;
+    width: 25%;
     margin-right: 10px;
     flex: 0 0 auto;
 }
+
+@media (max-width: 1000px) {
+    .artists ul {
+        height: 400px;
+    }
+    .artists ul > * {
+        width: 33%;
+    }
+}
+@media (max-width: 750px) {
+    .artists ul {
+        height: 450px;
+    }
+    .artists ul > * {
+        width: 50%;
+    }
+}
+@media (max-width: 450px) {
+    .artists ul {
+        height: 500px;
+    }
+    .artists ul > * {
+        width: 100%;
+    }
+}
+
+
+
+
 .artists li a {
     display: block;
     text-decoration: none;

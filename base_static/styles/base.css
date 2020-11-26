@@ -4,6 +4,9 @@ html {
 * {
     box-sizing: border-box;
 }
+a {
+    cursor: pointer;
+}
 div {
     display: block;
 }
@@ -62,6 +65,12 @@ h1, h2, h3 {
     padding: 10px 50px;
     display: flex;
 }
+@media (max-width: 750px) {
+    .user > div {
+        padding: 10px 20px;
+    }
+}
+
 
 .user ul {
     margin-left: auto;
@@ -172,18 +181,51 @@ main.content {
     width: 100%;
     border-top: 1px solid #EBEAEB;
     background-color: #252525;
-    color: white;
+    color: #FFF;
 }
 .footer-wrapper {
+    position: relative;
     margin: 0 auto;
-    padding: 25px 50px;
+    padding: 40px 50px 90px 50px;
     max-width: 1440px;
 }
+@media (max-width: 600px) {
+    .footer-wrapper {
+        padding: 20px 20px 40px 20px;
+    }
+}
+
+
+.B {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-weight: bold;
+    color: darkslateblue;
+    margin: 50px;
+}
+.B h1 {
+    margin: 0;
+}
+
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 20px;
 }
+.about {
+    grid-column: 1;
+    grid-row: 1;
+}
+.support {
+    grid-column: 2;
+    grid-row: 1;
+}
+.join {
+    grid-column: 3;
+    grid-row: 1;
+}
+
 .about,
 .support {
     display: flex;
@@ -198,8 +240,74 @@ main.content {
     font-variant: small-caps;
     font-size: 22px;
 }
-
 .about > *,
-.support > * {
+.support > *,
+.join > * {
     margin-bottom: 8px;
+}
+
+.join {
+    width: 70%;
+    grid-column: 3/-1;
+}
+.join form {
+    display: flex;
+}
+.join form input {
+    width: 75%;
+    height: 32px;
+    line-height: 1.5em;
+    padding: 0 10px;
+    border: none;
+    font-size: 1rem;
+    background-color: #cecece;
+    transition: all 0.1s ease;
+}
+.join form button {
+    font-family: 'Fira Sans', sans-serif;
+    width: 100px;
+    height: 32px;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    appearance: none;
+    border: none;
+    background-color: #333333;
+    color: #FFF;
+    padding: 0;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.join form button:hover {
+    background-color: #222222;
+}
+.join form input:focus {
+    outline: none;
+    background-color: #FFF;
+}
+
+@media (max-width: 1000px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about {
+        grid-row: 2;
+    }
+    .support {
+        grid-row: 2;
+    }
+    .join {
+        grid-column: 1/-1;
+        margin-bottom: 35px;
+    }
+    .join form input {
+        width: 300px;
+    }
+}
+@media (max-width: 600px) {
+    .join {
+        margin-bottom: 15px;
+    }
+    .B {
+        margin: 20px;
+    }
 }

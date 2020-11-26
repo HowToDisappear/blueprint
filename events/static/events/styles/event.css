@@ -74,6 +74,7 @@ h3, h4 {
     grid-template-columns: 47% 47%;
     grid-gap: 6%;
 }
+
 .details p {
     margin-top: 0;
 }
@@ -83,6 +84,25 @@ h3, h4 {
 .location {
     grid-column: 2;
 }
+@media (max-width: 750px) {
+    .details {
+        grid-template-columns: 1fr;
+    }
+    .lorem {
+        grid-column: 1;
+        grid-row: 2;
+        margin-bottom: 25px;
+    }
+    .location {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    h3 {
+        margin-top: 0;
+    }
+}
+
+
 figure {
     margin: 0;
 }
